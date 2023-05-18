@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doofenshmirtz | Home</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+</head>
+<body>
+    <div class="nav">
+        <div id="nav-profile">
+            <img src="{{url_for('static', filename='menubtn.svg')}}" class="nav-profileimg nav-img" alt="">
+        </div>
+        <div id="nav-logo">
+            <img src="{{url_for('static', filename='menubtn.svg')}}" class="nav-logoimg nav-img" alt="">
+        </div>
+        <div id="nav-menubtn">
+            <img src="{{url_for('static', filename='menubtn.svg')}}" class="nav-menubtnimg nav-img" alt="">
+        </div>
+    </div>
+    <div class="main">
+        <h1 class="main-txt">new generation <br>new ideas</h1>
+    </div>
+</body>
+</html>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="{{url_for('static', filename='main.js')}}"></script>
