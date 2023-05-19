@@ -54,19 +54,80 @@
     <div class="profile-menu">
 
     </div>
-    <div class="signup">
+<!-- Signu8p -->
+    <div class="signup auth">
         <div class="menu-img">
             <img src="{{url_for('static', filename='signup-img.svg')}}" id="menuimg" alt="">
         </div>
         <div class="auth-contents">
             <img src="{{url_for('static', filename='logo.svg')}}" class="authlogo" alt="">
             <p class="authehh">lets do this</p>
-            <form action="" method="post" class="signup-form"></form>
+            <form action="" method="post" id="signupform" class="signup-form">
+                <label for="signup-name" class="authlabel">Name</label><br>
+                <input type="text" name="signup-name" id="signup-name" placeholder="Heinz Doofenshmirtz" class="authinput">
+                <br>
+                <label for="signup-email" class="authlabel">E-Mail</label><br>
+                <input type="text" name="signup-email" id="signup-email" placeholder="perry@platypus.net" class="authinput">
+                <br>
+                <label for="signup-username" class="authlabel">Username</label><br>
+                <input type="text" name="signup-username" id="signup-username" placeholder="doofevilinc" class="authinput">
+                <br>
+                <label for="signup-password" class="authlabel">Password</label><br>
+                <input type="text" name="signup-password" id="signup-password" placeholder="perrytheplatypus123" class="authinput">
+                <br>
+                <div class="signup-dob">
+                    <input type="number" name="dob-dd" id="dob-dd" placeholder="DD" max=31 min=0 class="auth-dob">
+                    <input type="number" name="dob-mm" id="dob-mm" placeholder="MM" min=1 max=12 class="auth-dob">
+                    <input type="number" name="dob-yyyy" id="dob-yyyy" placeholder="YYYY" class="auth-dob" max=2023 min=1900>
+                </div>
+                <p class="auth-pageswitcher">Already have an account? <span class="pageswitcher-link">Login</span></p><br>
+                <input type="submit" class="authsubmit" value="Join">
+                <div class="signup-altauths">
+                    <div class="signup-altauth">
+                        <img src="{{url_for('static', filename='google.svg')}}" class="altauth-img" alt="">
+                    </div>
+                    <div class="signup-altauth">
+                        <img src="{{url_for('static', filename='discord.svg')}}" class="altauth-img" alt="">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!-- Login -->
+    <div class="login auth">
+        <div class="menu-img">
+            <img src="{{url_for('static', filename='login-img.svg')}}" id="menuimg" alt="">
+        </div>
+        <div class="auth-contents">
+            <img src="{{url_for('static', filename='logo.svg')}}" class="authlogo" alt="">
+            <p class="authehh">lets do this</p>
+            <form action="" method="post" class="login-form">
+                <label for="login-email" class="authlabel">Username</label><br>
+                <input type="text" name="login-email" id="login-email" class="authinput">
+                <br>
+                <label for="login-password" class="authlabel">Password</label><br>
+                <input type="text" name="login-password" id="login-password" class="authinput">
+                <br>
+                <p id="forgor">Forgot Password?</p>
+                <div id="loginjoin">
+                    <input type="submit" class="authsubmit" value="Log In">
+                    <p class="auth-pageswitcher">Dont have an account? <span class="pageswitcher-link">Join</span></p><br>
+                </div>
+                <div class="signup-altauths">
+                    <div class="signup-altauth">
+                        <img src="{{url_for('static', filename='google.svg')}}" class="altauth-img" alt="">
+                    </div>
+                    <div class="signup-altauth">
+                        <img src="{{url_for('static', filename='discord.svg')}}" class="altauth-img" alt="">
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
     {% block body %}
     {% endblock %}
 </body>
+</html><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js" integrity="sha512-Mf/xUqfWvDIr+1B6zfnIDIiG7XHzyP/guXUWgV6PgaQoIFeXkJQR5XWh9fqAiCiRCpemabt3naV4jhDWVnuYDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
