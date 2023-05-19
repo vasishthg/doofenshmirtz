@@ -4,4 +4,53 @@
     <div class="main">
         <h1 class="main-txt">new generation <br>new ideas</h1>
     </div>
+    <div class="aboutus">
+        <div>
+            <p class="smolhead">/ Aboutus</p>
+            <h2 class="abouthead">What do we <br> do</h2>
+            <p class="about-txt">Lorem ipsum dolor sit amet consectetur. Vestibulum amet ipsum aliquam diam purus aenean mi. Libero nunc velit tempor felis morbi porta massa gravida. Nisi senectus quam blandit urna pellentesque ut sed. Mi mauris sed neque feugiat tristique id. Condimentum lectus id aliquet duis ut fermentum mauris consequat. Et egestas pellentesque nec leo eu interdum sed lacus enim. Nulla rhoncus justo enim donec pulvinar in tellus felis. Fermentum viverra sit turpis quam in fringilla luctus. Adipiscing blandit mattis iaculis proin suspendisse in.</p>
+        </div>
+        <div class="aboutusimg">
+            <img src="{{url_for('static', filename='aboutus.png')}}" class="img-aboutus" alt="">
+        </div>
+    </div><br><br>
+    <div class="services">
+        <p class="smolhead">/ Services</p>
+        <hr>
+        <div class="service">
+            <img src="{{url_for('static', filename='vr.svg')}}" class="service-img" alt="">
+            <div class="service-main">
+                <p class="service-head">Virtual Reality</p>
+                <p class="service-txt">Lorem ipsum dolor sit amet consectetur. Vestibulum amet ipsum aliquam diam purus aenean mi. Libero nunc velit tempor felis morbi porta massa gravida. Nisi senectus quam blandit urna pellentesque ut sed. </p>
+            </div>
+            <div class="serviceredirimg">
+                <img src="{{url_for('static', filename='redir2.svg')}}" class="service-redirimg" alt="">
+            </div>
+        </div>
+        <hr>
+        <div class="service">
+            <img src="{{url_for('static', filename='vr.svg')}}" class="service-img" alt="">
+            <div class="service-main">
+                <p class="service-head">Updates</p>
+                <p class="service-txt">Lorem ipsum dolor sit amet consectetur. Vestibulum amet ipsum aliquam diam purus aenean mi. Libero nunc velit tempor felis morbi porta massa gravida. Nisi senectus quam blandit urna pellentesque ut sed. </p>
+            </div>
+            <div class="serviceredirimg">
+                <img src="{{url_for('static', filename='redir2.svg')}}" class="service-redirimg" alt="">
+            </div>
+        </div>
+        <hr>
+        <div class="service">
+            <img src="{{url_for('static', filename='vr.svg')}}" class="service-img" alt="">
+            <div class="service-main">
+                <p class="service-head">Community</p>
+                <p class="service-txt">Lorem ipsum dolor sit amet consectetur. Vestibulum amet ipsum aliquam diam purus aenean mi. Libero nunc velit tempor felis morbi porta massa gravida. Nisi senectus quam blandit urna pellentesque ut sed. </p>
+            </div>
+            <div class="serviceredirimg">
+                <img src="{{url_for('static', filename='redir2.svg')}}" class="service-redirimg" alt="">
+            </div>
+        </div>
+        <hr>
+        
+    </div>
+    <button id="service-loadmore">Load More</button>
 {% endblock %}

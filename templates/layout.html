@@ -11,13 +11,13 @@
 
 <body>
     <div class="nav">
-        <div id="nav-profile">
+        <div id="nav-profile" class="hoverable">
             <img src="{{url_for('static', filename='pfp.svg')}}" class="nav-profileimg nav-img" alt="">
         </div>
-        <div id="nav-logo">
+        <div id="nav-logo" class="hoverable">
             <img src="{{url_for('static', filename='logo.svg')}}" class="nav-logoimg nav-img" alt="">
         </div>
-        <div id="nav-menubtn">
+        <div id="nav-menubtn" class="hoverable">
             <img src="{{url_for('static', filename='menubtn.svg')}}" class="nav-menubtnimg nav-img" alt="">
         </div>
     </div>
@@ -64,22 +64,22 @@
             <p class="authehh">lets do this</p>
             <form action="" method="post" id="signupform" class="signup-form">
                 <label for="signup-name" class="authlabel">Name</label><br>
-                <input type="text" name="signup-name" id="signup-name" placeholder="Heinz Doofenshmirtz" class="authinput">
+                <input type="text" name="signup-name" id="signup-name" class="authinput">
                 <br>
                 <label for="signup-email" class="authlabel">E-Mail</label><br>
-                <input type="text" name="signup-email" id="signup-email" placeholder="perry@platypus.net" class="authinput">
+                <input type="text" name="signup-email" id="signup-email" class="authinput">
                 <br>
                 <label for="signup-username" class="authlabel">Username</label><br>
-                <input type="text" name="signup-username" id="signup-username" placeholder="doofevilinc" class="authinput">
+                <input type="text" name="signup-username" id="signup-username"  class="authinput">
                 <br>
                 <label for="signup-password" class="authlabel">Password</label><br>
-                <input type="text" name="signup-password" id="signup-password" placeholder="perrytheplatypus123" class="authinput">
+                <input type="text" name="signup-password" id="signup-password"  class="authinput">
                 <br>
                 <div class="signup-dob">
                     <input type="number" name="dob-dd" id="dob-dd" placeholder="DD" max=31 min=0 class="auth-dob">
                     <input type="number" name="dob-mm" id="dob-mm" placeholder="MM" min=1 max=12 class="auth-dob">
                     <input type="number" name="dob-yyyy" id="dob-yyyy" placeholder="YYYY" class="auth-dob" max=2023 min=1900>
-                </div>
+                </div><br><br>
                 <p class="auth-pageswitcher">Already have an account? <span class="pageswitcher-link">Login</span></p><br>
                 <input type="submit" class="authsubmit" value="Join">
                 <div class="signup-altauths">
@@ -126,9 +126,33 @@
     </div>
     {% block body %}
     {% endblock %}
+    <br><br><br><br>
+    <center>
+        <footer>
+            <p class="footer">Doofenshmirtz Co.</p>
+            <p class="footer" style="margin-left: 2em;">2023</p>
+            <div class="footer">
+                <p id="folo">Follow us on</p>
+                <div style="display: inline-block; vertical-align: middle; margin-left: 1em;">
+                    <img src="{{url_for('static', filename='insta.svg')}}" class="footer-img" alt="">
+                    <img src="{{url_for('static', filename='linkedin.svg')}}"  class="footer-img"alt="">
+                    <img src="{{url_for('static', filename='twitter.svg')}}"  class="footer-img"alt="">
+                </div>
+            </div>
+        </footer>
+    </center>
+    <div class="cursor">
+    
+        <div class="cursor__ball cursor__ball--small">
+          <svg height="20" width="20">
+            <circle cx="10" cy="10" r="8" stroke-width="0"></circle>
+          </svg>
+        </div>
+      </div>
 </body>
-</html><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js" integrity="sha512-Mf/xUqfWvDIr+1B6zfnIDIiG7XHzyP/guXUWgV6PgaQoIFeXkJQR5XWh9fqAiCiRCpemabt3naV4jhDWVnuYDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</html>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js" integrity="sha512-Mf/xUqfWvDIr+1B6zfnIDIiG7XHzyP/guXUWgV6PgaQoIFeXkJQR5XWh9fqAiCiRCpemabt3naV4jhDWVnuYDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
 <script src="{{url_for('static', filename='main.js')}}"></script>
