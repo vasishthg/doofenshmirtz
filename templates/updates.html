@@ -1,0 +1,125 @@
+{% extends "layout.html" %}
+{% block body %}
+<title>Doofenshmirtz | Updates</title>
+<body>
+    <h1 id="updates-head">LIVE UPDATES</h1>
+
+        <div class="updates-ssss">
+            <div class="updates-upcoming">
+                <div class="update-upcoming">
+                    <img src="{{url_for('static', filename='upcoming-banner.svg')}}" class="upcoming-img" alt="">
+                    <div class="upcoming-details">
+                        <p class="upcoming-subtxt">Indian Premiere League</p>
+                        <p class="upcoming-head">CSK vs RCB</p>
+                        <div class="upcoming-timer">
+                            <div class="upcoming-augh">
+                                <p class="upcoming-date">20 Nov</p>
+                                <p class="upcoming-timerr">19:30</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="upcoming-detailsbtn">DETAILS</button>
+                </div>
+                <div class="update-upcoming">
+                    <img src="{{url_for('static', filename='upcoming-banner.svg')}}" class="upcoming-img" alt="">
+                    <div class="upcoming-details">
+                        <p class="upcoming-subtxt">Indian Premiere League</p>
+                        <p class="upcoming-head">CSK vs RCB</p>
+                        <div class="upcoming-timer">
+                            <div class="upcoming-augh">
+                                <p class="upcoming-date">20 Nov</p>
+                                <p class="upcoming-timerr">19:30</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="upcoming-detailsbtn">DETAILS</button>
+                </div>
+                
+            </div>
+            <br><br>
+        </div>
+        <center>
+            <div class="teams">
+                {% for team in teams %}
+                <div class="team">
+                    <img src="{{teams[loop.index-1]['imgurl']}}" class="team-img" alt="">
+                    <div class="team-details">
+                        <p class="team-name">{{teams[loop.index-1]['teamabbrv']}}</p>
+                        <p class="team-followers">{{teams[loop.index-1]['followers']}} followers</p>
+                    </div>
+                    {% if 'loggedin' in session %}
+                    {% if user['following'] == team['teamabbrv'] %}
+                    <button class="team-followbtn following loggedinbtn hoverable"  id="team-{{teams[loop.index-1]['id']}}">Following</button>
+                    {% else %}
+                    <button class="team-followbtn loggedinbtn hoverable"  id="team-{{teams[loop.index-1]['id']}}">Follow</button>
+                    {%endif%}
+                    {% else %}
+                    <button class="team-followbtn hoverable not-loggedin-follow" id="not-loggedin-follow">Follow </button>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+        </center>
+        <div class="live">
+            <h1 style="margin-left: 3.5em;">Live Now</h1>
+            {% if 'loggedin' in session %}
+            {% if ipl_match %}
+          <div class="liveteams">
+              <div class="liveteam team1">
+                  <div class="team-detailss">
+                      <img src="{{team1img}}" class="team-details-img" alt="">
+                      <p class="team-detials-name">{{ipl_match['team1_name']}}</p>
+                      {% if match_score %}
+                      <div class="whatteamdoin">batting</div>
+                      {% else %}
+                    {% endif %}
+                  </div>
+                  <div class="team-score">
+                    {% if match_score %}
+
+                      <div class="team-smolscore">{{match_score['runs']}}/{{match_score['wickets']}}</div>
+                      <div class="team-overs">({{match_score['overs']}})</div>
+                      {% else %}
+                    <div class="team-smolscore">0/0</div>
+                    <div class="team-overs">(0)</div>
+                      {% endif %}
+                  </div>
+              </div>
+              
+              <div class="progress-stat">
+                <div class="progeres">
+                    <p id="progress-status">{{ipl_match['state']}} <br></p>
+                    <p id="progress-tosswinner">{{ipl_match['status']}}</p>
+                </div>
+              </div>
+              <div class="liveteam team2">
+                <div class="team-detailss">
+                    <img src="{{team2img}}" class="team-details-img" alt="">
+                    <p class="team-detials-name">{{ipl_match['team2_name']}}</p>
+                    {% if match_score %}
+                    <div class="whatteamdoin">batting</div>
+                    {% else %}
+                    {% endif %}
+                </div>
+                <div class="team-score">
+                    {% if match_score %}
+                    <div class="team-smolscore">{{match['matchScore']['team2Score']['inngs1']['runs']}}/{{match['matchScore']['team2Score']['inngs1']['wickets']}}</div>
+                    <div class="team-overs">({{match['matchScore']['team2Score']['inngs1']['overs']}})</div>
+                    {% else %}
+                    <div class="team-smolscore">0/0</div>
+                    <div class="team-overs">(0)</div>
+                    {% endif %}
+                </div>
+            </div>
+          </div>
+     {% else %}
+     <p style="text-align: center;
+     color: rgb(193, 193, 193); margin-top: 5em;">No live matches</p>
+     {% endif %}
+            {% else %}
+            {% endif %}
+        </div>
+
+
+</body>
+{% endblock %}

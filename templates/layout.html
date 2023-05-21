@@ -7,18 +7,22 @@
     <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
     <link rel="shortcut icon" href="{{url_for('static', filename='logo.svg')}}" type="image/x-icon">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
 </head>
 
-<body>
+<body >
     <div class="nav">
-        <div id="nav-profile" class="hoverable">
-            <img src="{{url_for('static', filename='pfp.svg')}}" class="nav-profileimg nav-img" alt="">
+        <div id="nav-profile">
+            <img src="{{url_for('static', filename='pfp.svg')}}" class="nav-profileimg hoverable nav-img" alt="">
         </div>
-        <div id="nav-logo" class="hoverable">
-            <img src="{{url_for('static', filename='logo.svg')}}" class="nav-logoimg nav-img" alt="">
+        <div id="nav-logo">
+            <img src="{{url_for('static', filename='logo.svg')}}" class="nav-logoimg hoverable nav-img" alt="">
         </div>
-        <div id="nav-menubtn" class="hoverable">
-            <img src="{{url_for('static', filename='menubtn.svg')}}" class="nav-menubtnimg nav-img" alt="">
+        <div id="nav-menubtn">
+            <img src="{{url_for('static', filename='menubtn.svg')}}" class="nav-menubtnimg hoverable nav-img" alt="">
         </div>
     </div>
     <div class="menu">
@@ -28,31 +32,50 @@
         <div class="menu-contents">
             <img src="{{url_for('static', filename='menu-backbtn.svg')}}" class="menu-backbtn" alt="">
             <div class="menu-links">
+                <a href="/">
                 <div class="menu-link">
                     <p class="menu-link-name">Home</p>
                     <img src="{{url_for('static', filename='menuredir.svg')}}" class="menu-redirimg" alt="">
                 </div>
+                </a>
+                <a href="/community">
                 <div class="menu-link">
                     <p class="menu-link-name">Community</p>
                     <img src="{{url_for('static', filename='menuredir.svg')}}" class="menu-redirimg" alt="">
                 </div>
+                </a>
+                <a href="/vr">
                 <div class="menu-link">
                     <p class="menu-link-name">Virtual Reality</p>
                     <img src="{{url_for('static', filename='menuredir.svg')}}" class="menu-redirimg" alt="">
                 </div>
+                </a>
+                <a href="/book/tickets">
                 <div class="menu-link">
                     <p class="menu-link-name">Tickets</p>
                     <img src="{{url_for('static', filename='menuredir.svg')}}" class="menu-redirimg" alt="">
                 </div>
+                </a>
+                <a href="/updates">
                 <div class="menu-link">
                     <p class="menu-link-name">Updates</p>
                     <img src="{{url_for('static', filename='menuredir.svg')}}" class="menu-redirimg" alt="">
                 </div>
+                </a>
             </div>
         </div>
     </div>
+    <!-- profile menu -->
     <div class="profile-menu">
-
+        {% if 'loggedin' in session %}
+        <p class="profile-name">Samarth Saluja <br> <span class="uname">@xinolol</span></p>
+        <p class="logout hoverable" id="logout">logout</p>
+        {% else %}
+        <p class="profile-name">Welcome <br> <span class="uname">@guest</span></p>
+        <p class="logout to-login hoverable">login</p>
+        
+        {% endif %}
+        <img src="{{url_for('static', filename='menu-backbtn.svg')}}" class="profile-backbtn hoverable" alt="">
     </div>
 <!-- Signu8p -->
     <div class="signup auth">
@@ -80,8 +103,8 @@
                     <input type="number" name="dob-mm" id="dob-mm" placeholder="MM" min=1 max=12 class="auth-dob">
                     <input type="number" name="dob-yyyy" id="dob-yyyy" placeholder="YYYY" class="auth-dob" max=2023 min=1900>
                 </div><br><br>
-                <p class="auth-pageswitcher">Already have an account? <span class="pageswitcher-link">Login</span></p><br>
-                <input type="submit" class="authsubmit" value="Join">
+                <p class="auth-pageswitcher">Already have an account? <span class="pageswitcher-link to-login">Login</span></p><br>
+                <input type="submit" class="authsubmit" id="signup-button" value="Join">
                 <div class="signup-altauths">
                     <div class="signup-altauth">
                         <img src="{{url_for('static', filename='google.svg')}}" class="altauth-img" alt="">
@@ -100,8 +123,8 @@
         </div>
         <div class="auth-contents">
             <img src="{{url_for('static', filename='logo.svg')}}" class="authlogo" alt="">
-            <p class="authehh">lets do this</p>
-            <form action="" method="post" class="login-form">
+            <p class="authehh">welcome back</p>
+            <form action="" method="post" id="loginform" class="login-form">
                 <label for="login-email" class="authlabel">Username</label><br>
                 <input type="text" name="login-email" id="login-email" class="authinput">
                 <br>
@@ -111,7 +134,7 @@
                 <p id="forgor">Forgot Password?</p>
                 <div id="loginjoin">
                     <input type="submit" class="authsubmit" value="Log In">
-                    <p class="auth-pageswitcher">Dont have an account? <span class="pageswitcher-link">Join</span></p><br>
+                    <p class="auth-pageswitcher">Dont have an account? <span class="pageswitcher-link to-signup">Join</span></p><br>
                 </div>
                 <div class="signup-altauths">
                     <div class="signup-altauth">
@@ -128,7 +151,7 @@
     {% endblock %}
     <br><br><br><br>
     <center>
-        <footer>
+        <!-- <footer>
             <p class="footer">Doofenshmirtz Co.</p>
             <p class="footer" style="margin-left: 2em;">2023</p>
             <div class="footer">
@@ -139,7 +162,7 @@
                     <img src="{{url_for('static', filename='twitter.svg')}}"  class="footer-img"alt="">
                 </div>
             </div>
-        </footer>
+        </footer> -->
     </center>
     <div class="cursor">
     
@@ -149,10 +172,31 @@
           </svg>
         </div>
       </div>
+    <div class="notifs">
+        <div class="notif success notif-s">
+            <p class="notif-close hoverable">close</p>
+            <div class="notif-status">
+                <p class="errormsg" id="smsg"></p>
+                <p class="notif-stat" id="ns-s">SUCCESS</p>
+                <p class="notif-code" id="scode"></p>
+            </div>
+        </div>
+        <div class="notif error notif-e">
+            <p class="notif-close hoverable">close</p>
+            <div class="notif-status">
+                <p class="errormsg" id="emsg"></p>
+                <p class="notif-stat" id="ne-e">ERROR</p>
+                <p class="notif-code" id="ecode"></p>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+<script nomodule src="https://cdnjs.cloudflare.com/ajax/libs/babel-polyfill/7.6.0/polyfill.min.js" crossorigin="anonymous"></script>
+<script nomodule src="https://polyfill.io/v3/polyfill.min.js?features=Object.assign%2CElement.prototype.append%2CNodeList.prototype.forEach%2CCustomEvent%2Csmoothscroll" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.1/gsap.min.js" integrity="sha512-Mf/xUqfWvDIr+1B6zfnIDIiG7XHzyP/guXUWgV6PgaQoIFeXkJQR5XWh9fqAiCiRCpemabt3naV4jhDWVnuYDQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js" integrity="sha256-xLD7nhI62fcsEZK2/v8LsBcb4lG7dgULkuXoXB/j91c=" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.js"></script>
+
 <script src="{{url_for('static', filename='main.js')}}"></script>
