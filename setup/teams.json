@@ -1,0 +1,10 @@
+[{"id":1, "teamname":"Sunrises Hydrebad", "teamabbrv":"SRH", "followers":0, "imgurl":"/static/team/srh.svg"},
+ {"id":2, "teamname":"Chennai Super Kings", "teamabbrv":"CSK", "followers":1, "imgurl":"/static/team/csk.svg"},
+ {"id":3, "teamname":"Mumbai Indians", "teamabbrv":"MI", "followers":0, "imgurl":"/static/team/mi.svg"},
+ {"id":4, "teamname":"Rajasthan Royals", "teamabbrv":"RR", "followers":0, "imgurl":"/static/team/rr.svg"},
+ {"id":5, "teamname":"Kolkata Knight Riders", "teamabbrv":"KKR", "followers":0, "imgurl":"/static/team/kkr.svg"},
+ {"id":6, "teamname":"Delhi Capitals", "teamabbrv":"DC", "followers":0, "imgurl":"/static/team/dc.svg"},
+ {"id":7, "teamname":"Royal Challengers Bangalore", "teamabbrv":"RCB", "followers":0, "imgurl":"/static/team/rcb.svg"},
+ {"id":8, "teamname":"Gujrat Titans", "teamabbrv":"GT", "followers":0, "imgurl":"/static/team/gt.svg"},
+ {"id":9, "teamname":"Punjab Kings", "teamabbrv":"PBKS", "followers":0, "imgurl":"/static/team/pbks.svg"},
+ {"id":10, "teamname":"Lucknow Super Giants", "teamabbrv":"LCG", "followers":0, "imgurl":"/static/team/lsg.svg"}]

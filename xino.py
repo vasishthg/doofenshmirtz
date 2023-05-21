@@ -23,7 +23,7 @@ app.config['BASIC_AUTH_PASSWORD'] = 'xino-videoupload'
 basic_auth = BasicAuth(app)
 
 headers = {
-            "X-RapidAPI-Key": "1700480626msh4d4f83cf6b26be5p1c6c1fjsn5804ffc22235",
+            "X-RapidAPI-Key": "17bc00c582msh07a0ec287500ac9p1358bbjsn1b4f53d85f6d",
             "X-RapidAPI-Host": "cricbuzz-cricket.p.rapidapi.com"
         }
 mysql = MySQL(app)
@@ -136,13 +136,15 @@ def updates():
         srsresponse = srsresponse.json()
         
         ipl_matches = []
-        
+        print(lmresponse)
         for match_type in lmresponse['typeMatches']:
             if match_type['matchType'] == 'League':
                 for series_match in match_type['seriesMatches']:
-                    if series_match['seriesAdWrapper']['seriesName'] == 'Indian Premier League 2023':
-                        for match in series_match['seriesAdWrapper']['matches']:
-                            ipl_matches.append(match)
+                    if 'seriesAdWrapper' in series_match:
+                        if series_match['seriesAdWrapper']['seriesName'] == 'Indian Premier League 2023':
+                            if 'matches' in series_match['seriesAdWrapper']:
+                                for match in series_match['seriesAdWrapper']['matches']:
+                                    ipl_matches.append(match)
         for match in ipl_matches:
             series_name = match["matchInfo"]["seriesName"]
             print(series_name)
@@ -157,8 +159,7 @@ def updates():
             if 'matchScore' in match:
                 match_score = match['matchScore']["team1Score"]["inngs1"]
             team_id = match["matchInfo"]["team1"]["teamId"]
-            if 'currBatTeamId' in match["matchInfo"]:
-                current_bat_team_id = match["matchInfo"]["currBatTeamId"]
+            
 
             ipl_match = {
                 "series_name": series_name,
@@ -171,16 +172,21 @@ def updates():
                 "team2_sname": team2_sname,
                 "team_id": team_id,
             }
+            print(team_id)
+            cur.execute("SELECT imgurl FROM teams WHERE teamabbrv = %s", [team2_sname])
+            team1img = cur.fetchone()['imgurl']
+            cur.execute("SELECT imgurl FROM teams WHERE teamabbrv = %s", [team1_sname])
+            team2img = cur.fetchone()['imgurl']
             if 'matchScore' in match:
                 ipl_match["match_score"] = match_score
                 return render_template('updates.html', user=user, teams=teams, ipl_matches=ipl_matches, team1img=team1img, team2img=team2img, match = match, ipl_match= ipl_match, match_score=match_score)       
+            if 'currBatTeamId' in match["matchInfo"]:
+                current_bat_team_id = match["matchInfo"]["currBatTeamId"]
+                return render_template('updates.html', user=user, teams=teams, ipl_matches=ipl_matches, team1img=team1img, team2img=team2img, match = match, ipl_match= ipl_match, match_score=match_score, current_bat_team_id=  current_bat_team_id)    
 
             print(ipl_match)
-            cur.execute("SELECT imgurl FROM teams WHERE teamabbrv = %s", [team1_sname])
-            team1img = cur.fetchone()['imgurl']
-            cur.execute("SELECT imgurl FROM teams WHERE teamabbrv = %s", [team2_sname])
-            team2img = cur.fetchone()['imgurl']
-            return render_template('updates.html', user=user, teams=teams, ipl_matches=ipl_matches, team1img=team1img, team2img=team2img, match = match, ipl_match= ipl_match)       
+            
+            return render_template('updates.html', user=user, teams=teams, ipl_matches=ipl_matches, team1img=team1img, team2img=team2img, match = match, ipl_match= ipl_match, team_id=team_id)       
         
         
         return render_template('updates.html', user=user, teams=teams)
@@ -207,7 +213,7 @@ def upload():
         vr_path = os.path.join(app.config['UPLOAD_FOLDER'], vr_filename)
         convert_to_vr(video_path, vr_path)
 
-        return 'Video uploaded and converted successfully'
+        return redirect('/vr')
 
     return render_template('upload.html')
 
@@ -232,7 +238,7 @@ def vr():
 def get_vr_video_files():
     vr_files = []
     for file in os.listdir(app.config['UPLOAD_FOLDER']):
-        if file.startswith('vr_') and file.endswith('.mp4'):
+        if file.endswith('.mp4'):
             vr_files.append(file)
     return vr_files
 

@@ -2,11 +2,13 @@
 {% block body %}
 <body>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <a-scene>
-        <a-assets>
-            <video id="vr-video" src="vr_videos/{{ latest_vr_video }}" autoplay loop crossorigin="anonymous"></video>
-        </a-assets>
-        <a-videosphere src="#vr-video"></a-videosphere>
-    </a-scene>
+    <div>
+        <a-scene>
+            <a-assets>
+                <video id="vr-video" src="vr_videos/{{ latest_vr_video }}" autoplay loop crossorigin="anonymous"></video>
+            </a-assets>
+            <a-videosphere src="#vr-video"></a-videosphere>
+        </a-scene>
+    </div>
 </body>
 {% endblock %}

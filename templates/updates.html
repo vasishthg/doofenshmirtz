@@ -10,33 +10,64 @@
                     <img src="{{url_for('static', filename='upcoming-banner.svg')}}" class="upcoming-img" alt="">
                     <div class="upcoming-details">
                         <p class="upcoming-subtxt">Indian Premiere League</p>
-                        <p class="upcoming-head">CSK vs RCB</p>
+                        <p class="upcoming-head">GT vs CSK</p>
                         <div class="upcoming-timer">
                             <div class="upcoming-augh">
-                                <p class="upcoming-date">20 Nov</p>
+                                <p class="upcoming-date">23 May</p>
                                 <p class="upcoming-timerr">19:30</p>
                             </div>
                         </div>
                     </div>
-                    <button class="upcoming-detailsbtn">DETAILS</button>
+                    <button class="upcoming-detailsbtn" onclick="window.location.href = '/book'">BOOK</button>
                 </div>
                 <div class="update-upcoming">
                     <img src="{{url_for('static', filename='upcoming-banner.svg')}}" class="upcoming-img" alt="">
                     <div class="upcoming-details">
                         <p class="upcoming-subtxt">Indian Premiere League</p>
-                        <p class="upcoming-head">CSK vs RCB</p>
+                        <p class="upcoming-head">LSG vs TBD</p>
                         <div class="upcoming-timer">
                             <div class="upcoming-augh">
-                                <p class="upcoming-date">20 Nov</p>
+                                <p class="upcoming-date">24 May</p>
                                 <p class="upcoming-timerr">19:30</p>
                             </div>
                         </div>
                     </div>
-                    <button class="upcoming-detailsbtn">DETAILS</button>
+                    <button class="upcoming-detailsbtn" onclick="window.location.href = '/book'">BOOK</button>
                 </div>
+                <div class="update-upcoming">
+                    <img src="{{url_for('static', filename='upcoming-banner.svg')}}" class="upcoming-img" alt="">
+                    <div class="upcoming-details">
+                        <p class="upcoming-subtxt">Indian Premiere League</p>
+                        <p class="upcoming-head">TBD vs TBD</p>
+                        <div class="upcoming-timer">
+                            <div class="upcoming-augh">
+                                <p class="upcoming-date">26 May</p>
+                                <p class="upcoming-timerr">19:30</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="upcoming-detailsbtn" onclick="window.location.href = '/book'">BOOK</button>
+                </div>
+                
+                <div class="update-upcoming">
+                    <img src="{{url_for('static', filename='upcoming-banner.svg')}}" class="upcoming-img" alt="">
+                    <div class="upcoming-details">
+                        <p class="upcoming-subtxt">Indian Premiere League</p>
+                        <p class="upcoming-head">TBD vs TBD</p>
+                        <div class="upcoming-timer">
+                            <div class="upcoming-augh">
+                                <p class="upcoming-date">28 May</p>
+                                <p class="upcoming-timerr">19:30</p>
+                            </div>
+                        </div>
+                    </div>
+                    <button class="upcoming-detailsbtn" onclick="window.location.href = '/book'">BOOK</button>
+                </div>
+                
                 
             </div>
             <br><br>
+            
         </div>
         <center>
             <div class="teams">
@@ -67,10 +98,10 @@
           <div class="liveteams">
               <div class="liveteam team1">
                   <div class="team-detailss">
-                      <img src="{{team1img}}" class="team-details-img" alt="">
+                      <img src="{{team2img}}" class="team-details-img" alt="">
                       <p class="team-detials-name">{{ipl_match['team1_name']}}</p>
                       {% if match_score %}
-                      <div class="whatteamdoin">batting</div>
+                      <div class="whatteamdoin">{% if current_bat_team_id != team_id %}Bowling{% else %}Batting{% endif %}</div>
                       {% else %}
                     {% endif %}
                   </div>
@@ -94,17 +125,23 @@
               </div>
               <div class="liveteam team2">
                 <div class="team-detailss">
-                    <img src="{{team2img}}" class="team-details-img" alt="">
+                    <img src="{{team1img}}" class="team-details-img" alt="">
                     <p class="team-detials-name">{{ipl_match['team2_name']}}</p>
                     {% if match_score %}
-                    <div class="whatteamdoin">batting</div>
+                    <div class="whatteamdoin">{% if current_bat_team_id != team_id %}Bowling{% else %}Batting{% endif %}</div>
                     {% else %}
                     {% endif %}
                 </div>
                 <div class="team-score">
-                    {% if match_score %}
+                    {% if match_score %}                    
+                    {% if team2Score %}
+                    
                     <div class="team-smolscore">{{match['matchScore']['team2Score']['inngs1']['runs']}}/{{match['matchScore']['team2Score']['inngs1']['wickets']}}</div>
                     <div class="team-overs">({{match['matchScore']['team2Score']['inngs1']['overs']}})</div>
+                    {% else %}
+                    <div class="team-smolscore">0/0</div>
+                    <div class="team-overs">(0)</div>
+                    {% endif %}                    
                     {% else %}
                     <div class="team-smolscore">0/0</div>
                     <div class="team-overs">(0)</div>

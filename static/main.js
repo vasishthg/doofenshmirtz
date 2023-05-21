@@ -415,5 +415,18 @@ function handleSwipeEnd() {
 }
 
 $("#date-tue").click(function(){
-  
+  $("#t1-ticket").attr("src", "/static//team//gt.svg")
+  $("#t2-ticket").attr("src", "/static//team//csk.svg")
+})
+$("#date-wed").click(function(){
+  $("#t1-ticket").attr("src", "/static//team//lsg.svg")
+  $("#t2-ticket").attr("src", "/static//team//tbd.svg")
+})
+$("#date-fri").click(function(){
+  $("#t1-ticket").attr("src", "/static//team//tbd.svg")
+  $("#t2-ticket").attr("src", "/static//team//tbd.svg")
+})
+$("#date-sun").click(function(){
+  $("#t1-ticket").attr("src", "/static//team//tbd.svg")
+  $("#t2-ticket").attr("src", "/static//team//tbd.svg")
 })

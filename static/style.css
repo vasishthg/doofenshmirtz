@@ -621,7 +621,7 @@ footer{
   }
 
   *{
-    /* cursor: none !important; */
+    cursor: none !important;
   }
 
   .notif{
@@ -838,7 +838,7 @@ footer{
 
 .teams{
     padding-top: 6em;
-    margin-top: 80vh;
+    margin-top: 150vh;
     display: grid;
     grid-template-columns: auto auto auto;
     width: 82em;
@@ -856,7 +856,6 @@ footer{
 .team-details{
     display: inline-block;
     position: relative;
-    display: flex;
     margin-left: 1.2em;
     vertical-align:middle;
 }
@@ -864,12 +863,12 @@ footer{
 .team-name{
     font-size: 2em;
     margin-top: 0;
-    margin-bottom: 0;text-align: left;
+    margin-bottom: 0;
     font-family: 'Satoshi-Regular';
 }
 
 .team-followers{
-    margin-top: 0;text-align: left;
+    margin-top: 0;
     color: #b3b3b3;
     font-family: 'SAtoshi-bold';
 }

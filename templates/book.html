@@ -5,21 +5,18 @@
         <h1 style="margin-left: 3.5em;">Book Tickets</h1>
         {% if 'loggedin' in session %}
       <div class="liveteams">
-          <div class="liveteam team1">
-            <h1 class="teammmm">TEAMS</h1>
-            <div class="team-details">
-              {% for match in ipl_matches %}
-                <img src="/static//team/gt.svg" class="team-details-img" alt="">
-                <p class="team-details-name">{{ team1name }}</p>
-              {% endfor %}
+        <div class="liveteam team1">
+          <h1 class="teammmm">TEAMS</h1>
+            <div class="team-detailss">
+                <img src="/static//team//gt.svg" id="t1-ticket" class="team-details-img" alt="">
+                <p class="team-detials-name"></p>
             </div>
-            
-              <div class="team-score">
+            <div class="team-score">
 
-                  <div class="team-smolscore"></div>
-                  <div class="team-overs"></div>
-              </div>
-          </div>
+                <div class="team-smolscore"></div>
+                <div class="team-overs"></div>
+            </div>
+        </div>
           
           <div class="progress-stat">
             <div class="booktickets-h"><p class="bt">Book Tickets</p></div>
@@ -51,11 +48,11 @@
           <div class="liveteam team1">
             <h1 class="teammmm">TEAMS</h1>
               <div class="team-detailss">
-                  <img src="{{team2img}}" class="team-details-img" alt="">
+                  <img src="/static//team//csk.svg" id="t2-ticket" class="team-details-img" alt="">
                   <p class="team-detials-name"></p>
               </div>
               <div class="team-score">
-
+                  
                   <div class="team-smolscore"></div>
                   <div class="team-overs"></div>
               </div>
